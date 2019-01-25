@@ -6,11 +6,15 @@ import java.lang.instrument.Instrumentation;
 public class Agent {
     public static void premain(String agentArgs, Instrumentation inst) throws IOException {
         System.out.println("Starting agent on premain");
-        inst.addTransformer(new SimpleClassTransformer(), true);
+        addInterceptor(inst);
     }
     public static void agentmain(String agentArgs, Instrumentation inst) throws IOException {
         System.out.println("Starting agent on agentmain");
-        inst.addTransformer(new SimpleClassTransformer());
+        addInterceptor(inst);
     }
 
+    private static void addInterceptor(Instrumentation instrumentation) {
+        StdoutInterceptor interceptor = new StdoutInterceptor();
+        interceptor.intercept(instrumentation);
+    }
 }
