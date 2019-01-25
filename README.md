@@ -2,6 +2,8 @@
 
 Sample functional Java Agent that logs names of classes being loaded by JVM.
 
+In the different branches there are different samples of Java agents functionalities.
+
 Usage example (assuming a compiled Main Java class and the .jar file in the same directory):
 
 ```$ java -javaagent:stdout-interceptor-1.0.jar Main```
